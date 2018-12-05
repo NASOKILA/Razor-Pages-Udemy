@@ -1,0 +1,61 @@
+﻿@page
+@model TasteRestaurant.Pages.CategoryTypes.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+
+<h2>Categorie Types List</h2>
+
+<br />
+
+<p>
+    <a asp-page="Create" class="createCategoryBtn btn btn-success">
+        <i class="fas fa-plus"></i>
+        &nbsp;
+        Create New
+    </a>
+</p>
+
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Display Order</th>
+            <th>Actions</th>
+        </tr>
+
+        @if (Model.categoryTypes.Count() > 0)
+        {
+
+            @foreach (var cty in Model.categoryTypes)
+            {
+                <tr>
+                    <td>@cty.Id</td>
+                    <td>@cty.Name</td>
+                    <td>@cty.DisplayOrder</td>
+                    <td>
+                        <!--
+                            <a asp-page="Details" class="btn btn-primary" asp-route-id="@cty.Id"><span class="glyphicon glyphicon-pencil"></span></a>
+                            <a asp-page="Edit" class="btn btn-warning" asp-route-id="@cty.Id"><span class="glyphicon glyphicon-book"></span></a>
+                            <a asp-page="Delete" class="btn btn-danger" asp-route-id="@cty.Id"><span class="glyphicon glyphicon-trash"></span></a>
+                        -->
+
+                        @Html.Partial("_UnderscoreTableButtonsPartial", new IndivdualButtonPartial { Id = cty.Id })
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    @if (Model.categoryTypes.Count() < 1)
+    {
+        <p>No catecory types in the database...</p>
+    }
+</div>
+
+
+
+

@@ -1,0 +1,8 @@
+﻿@model Data.IndivdualButtonPartial   
+@*
+    //We specify the type of model that we are going to receive
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<a asp-page="@Model.Page" class="btn @Model.ButtonType" asp-route-id="@Model.ActionParameters"><i class="fas fa-@Model.Glyph"></i></a>
+

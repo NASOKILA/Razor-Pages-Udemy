@@ -1,0 +1,54 @@
+﻿@page
+@model TasteRestaurant.Pages.FoodTypes.DeleteModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<br />
+
+<h2>Delete Category Type</h2>
+
+<hr />
+
+<div>
+    <form method="post">
+        <div class="form-border">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="foodType.Id" />
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="foodType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input disabled value="@Model.foodType.Name" asp-for="foodType.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="foodType.Name" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                <button type="submit" class="btn btn-danger" asp-route-id="@Model.foodType.Id">Delete <i class="fas fa-trash-alt"></i></button>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+    </form>
+</div>
+
+
+
+

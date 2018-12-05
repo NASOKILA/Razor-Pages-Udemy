@@ -1,0 +1,64 @@
+﻿@page
+@model TasteRestaurant.Pages.CategoryTypes.CreateModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<br />
+<h2>Create Category Type</h2>
+
+<hr />
+
+<div>
+    <form method="post">
+        <div class="form-border">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="categoryType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="categoryType.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="categoryType.Name" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="categoryType.DisplayOrder" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <input asp-for="categoryType.DisplayOrder" class="form-control" />
+                </div>
+                <span asp-validation-for="categoryType.DisplayOrder" class="text-danger"></span>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                <button type="submit" class="btn btn-success createCategoryBtn">Create <i class="fas fa-plus"></i></button>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+    </form>
+</div>
+
+
+
+<!--We import the ValidationScripts so we can have validtions for out fields.-->
+@section Scripts {
+    @{Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,52 @@
+﻿@page
+@model TasteRestaurant.Pages.MenuItems.IndexModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+
+<h2>Menu Items List</h2>
+
+<br />
+
+<p>
+    <a asp-page="Create" class="createCategoryBtn btn btn-success">
+        <i class="fas fa-plus"></i>
+        &nbsp;
+        Create New
+    </a>
+</p>
+
+<div class="form-border">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Category Name</th>
+            <th>Food Name</th>
+            <th>Actions</th>
+        </tr>
+        @if (Model.MenuItemsList.Count() > 0)
+        {
+            @foreach (var fty in Model.MenuItemsList)
+            {
+                <tr>
+                    <td>@fty.Name</td>
+                    <td>@fty.Price</td>
+                    <td>@fty.CategoryType.Name</td>
+                    <td>@fty.FoodType.Name</td>
+                    <td>
+                        @Html.Partial("_UnderscoreTableButtonsPartial", new IndivdualButtonPartial { Id = fty.Id })
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    @if (Model.MenuItemsList.Count() < 1)
+    {
+        <p>No catecory types in the database...</p>
+    }
+</div>
+

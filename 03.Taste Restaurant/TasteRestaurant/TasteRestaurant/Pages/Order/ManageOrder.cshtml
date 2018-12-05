@@ -1,0 +1,61 @@
+﻿@page
+@model TasteRestaurant.Pages.Order.ManageOrderModel
+@{
+    ViewData["Title"] = "ManageOrder";
+}
+
+<h2>Manage Order's</h2>
+
+<br />
+
+@foreach (var item in Model.orderTotalDetails)
+{
+<div class="row form-border">
+    <div class="col-sm-5">
+        Order Number : @item.orderHeader.Id
+        <ul>
+            @foreach (var od in item.orderDetailsList)
+            {
+                <li>@(od.Name) x @(od.Count)</li>
+            }
+        </ul>
+    </div>
+
+    <div class="col-sm-5">
+        <div class="col-sm-4 col-sm-offset-2">
+            Order Total:
+            PickUp Time:
+            Order Status:
+            Comments:
+        </div>
+        <div class="col-sm-6">
+            <div>@item.orderHeader.OrderTotal</div>
+            <div>@item.orderHeader.PickUpTime</div>
+            <div>@item.orderHeader.Status</div>
+            <div>@item.orderHeader.Comments</div>
+        </div>
+    </div>
+
+    <div class="col-sm-2">
+        @if (item.orderHeader.Status == "Submited")
+        {
+            <a style="width:100%" asp-page-handler="ChangeOrderStatus" asp-route-headerId="@item.orderHeader.Id" class="btn btn-primary"><i class="fas fa-check"></i> Start Cooking</a>
+        }
+        else if (item.orderHeader.Status == "Being Prepared")
+        {
+            <a style="width:100%" asp-page-handler="ChangeOrderStatus" asp-route-headerId="@item.orderHeader.Id" class="btn btn-success"><i class="fas fa-utensils"></i> Order Prepared</a>
+        }
+        <a style="width:100%" asp-page-handler="CancelOrder" asp-route-headerId="@item.orderHeader.Id" class="btn btn-danger"><i class="fas fa-times"></i> Cancel Order</a>
+    </div>
+
+
+</div>
+    
+    <br />
+}
+
+@if (Model.orderTotalDetails.Count < 1)
+{
+    <p>No current orders...</p>
+}
+

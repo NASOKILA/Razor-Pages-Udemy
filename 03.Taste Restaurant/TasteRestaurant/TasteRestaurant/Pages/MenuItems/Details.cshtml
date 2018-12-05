@@ -1,0 +1,141 @@
+﻿@page
+@model TasteRestaurant.Pages.MenuItems.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<br />
+
+<h2>Menu Item Details</h2>
+
+<hr />
+
+<div>
+
+    <form method="post" class="col-sm-12">
+
+        <div class="col-sm-8">
+
+            <fieldset disabled>
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.Name" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input asp-for="menuItem.Name" class="form-control" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.Description" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <textarea asp-for="menuItem.Description" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.Price" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input asp-for="menuItem.Price" type="number" class="form-control" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.Image" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="file" asp-for="menuItem.Image" class="form-control" />
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.Spicyness" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select asp-for="menuItem.Spicyness" class="form-control" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()"></select>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.CategoryType.Name" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select asp-for="menuItem.CategoryType.Name" class="form-control">
+                                <option>@Model.menuItem.CategoryType.Name</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+                <div class="form-group">
+                    <div class="col-sm-4">
+                        <label asp-for="menuItem.FoodType.Name" class="custom-label"></label>
+                    </div>
+                    <div class="col-sm-8">
+                        <select asp-for="menuItem.FoodType.Name" class="form-control">
+                                <option>@Model.menuItem.FoodType.Name</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br />
+                <br />
+
+            </fieldset>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                    <a asp-page="Edit" asp-route-id="@Model.menuItem.Id" class="btn btn-warning">Edit <i class="fas fa-book"></i></a>
+                </div>
+            </div>
+
+            <br />
+            <br />
+        </div>
+
+        <div class="col-sm-1"></div>
+
+        <div class="col-sm-3">
+            @if (Model.menuItem.Image == null)
+            {
+                <img width="100%" src="~/images/defaultMenuItemImage.jpg" />
+            }
+            else
+            {
+                <img width="100%" src="@Model.menuItem.Image" />
+            }
+        </div>
+    </form>
+</div>
+
+<!--We import the ValidationScripts so we can have validtions for out fields.-->
+@section Scripts {
+    @{Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

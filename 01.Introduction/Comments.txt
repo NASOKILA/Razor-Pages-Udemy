@@ -1,0 +1,125 @@
+-----------------------------
+
+
+.NET history :
+	
+	1996 - ASP  : Active Server Pages, First Mirosoft Creation Of Dinamic Web Pages
+	
+	2002 - ASP.NET WebForm  : they implemented stateless web statefull, First Code Behind, 
+		it's hard to test, page lifecicles quick websites made.
+	
+	2008 - ASP.NET MVC : Easyer to test, first open source, build ontop of webforms
+		It was not build with cloud in mind.
+	
+	2016 - It's tied to MVC, has not IIS dependency it uses Web Servers, unification between MVC and webAPI,
+		has Dependency Injection build, has middlewares and more, everithyng in .NET Core is packages managed 
+		by NuGet. Everithing is opensource and a crossplatform.
+
+
+------------------------------
+
+
+wwwroot folder:
+	The wwwroot folder is something new that comes from .NET Core and is for containing css, js, images and libraries of our project.
+	Is for all the static files.
+
+
+-----------------------------
+
+
+The Main Method :
+	Is starts the project.
+
+
+----------------------------
+
+
+Pipeline and middlewares :
+	There are requests and response is returned.
+	This requests passes thrue several middlewares so the response can be formed, or it can return an error !!!
+	These middlewares are just methods for starting the project.
+	You can see some of them in the Startup file !!!
+
+
+---------------------------
+
+
+Pages foler :
+	We have MVC in .net core !!!
+	Pages work by the MVVM structure, NOT MVC.
+	We have a .cs class behind the html class.
+
+
+----------------------------
+
+
+IIS is a buid in web server.
+Kastrel is a webserver which executes requests
+
+
+----------------------------
+
+
+Tag Helpers : 
+	many helpers are avaliable like : 
+		asp-for="" 
+		asp-controller=""  
+		asp-action="" 
+	
+	<label asp-for=""></label> 
+		
+	They are easy and very user frendly !!!
+	
+
+HTML helpers : 
+	@Html.Label("", "", "");
+
+
+------------------------------
+
+
+Default Routing:
+	We can use the default folder structure to access files when we run our project.
+
+	For example if we have a folder "Books" and a razor page in it called "DramaBook_1.cshtml",
+	to show that file when we run the project we add to the route "/Book/DramaBook_1" and we 
+	can see our page.
+
+	It's simply mapping URL's to the phisical files on the disk.
+	index.cshtml is the default file.
+
+
+-------------------------------
+
+
+Razor Pages:
+	Razor pages have a pageModel behing their .cshtml page which holds all the logic, hanlers and so on.
+	This pageModel ends with .cshtml.cs 
+
+
+-------------------------------
+
+
+Attribute Routes :
+	@page "{id?}/{handler?}"
+	In this example we specify that we MIGHT be passing an id and a handler attributes.
+
+
+Handlers :
+	Handlers are like functions only they start with OnPost or OnGet 
+
+
+TempData :
+	With TempDate we can pass messages in between pages very easy !!!
+	We can just use the [TempData] attribute on a property we want to pass, but the other
+	page needs to have the same property with the same name and the [TempData] attribute above it !!!
+
+
+
+
+
+
+
+
+
+

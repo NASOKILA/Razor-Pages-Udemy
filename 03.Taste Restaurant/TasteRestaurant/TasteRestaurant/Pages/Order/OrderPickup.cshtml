@@ -1,0 +1,114 @@
+﻿@page
+@model TasteRestaurant.Pages.Order.OrderPickupModel
+@{
+    ViewData["Title"] = "OrderPickup";
+}
+
+<h2>Order Pickup</h2>
+
+<br />
+
+<div class="col-sm-12">
+
+    <div class="col-sm-4 col-sm-offset-8">
+
+        <form method="post">
+            <div class="row">
+                <div class="pull-right">
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.searchTypeViewModel.SearchCriteria, "Name")
+                        Name&nbsp;
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.searchTypeViewModel.SearchCriteria, "Email")
+                        Email&nbsp;
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.searchTypeViewModel.SearchCriteria, "Phone")
+                        Phone&nbsp;
+                    </label>
+                    <label class="radio-inline">
+                        @Html.RadioButtonFor(m => m.searchTypeViewModel.SearchCriteria, "OrderNumber")
+                        Order No.&nbsp;
+                    </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="pull-right">
+                    <input style="width:65%" asp-for="@Model.searchTypeViewModel.SearchText" type="text" class="col-sm-8 form-control" />
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+    <hr />
+    <br />
+
+
+    @foreach (var item in Model.orderTotalDetails)
+    {
+        <div class="row form-border">
+            <div class="col-sm-5">
+                Order Number : @item.orderHeader.Id
+                <ul>
+                    @foreach (var od in item.orderDetailsList)
+                    {
+                        <li>@(od.Name) x @(od.Count)</li>
+                    }
+                </ul>
+            </div>
+
+            <div class="col-sm-5">
+                <div class="col-sm-4 col-sm-offset-2">
+                    Order Total:
+                    PickUp Time:
+                    Order Status:
+                    Comments:
+                </div>
+                <div class="col-sm-6">
+                    <div>@item.orderHeader.OrderTotal</div>
+                    <div>@item.orderHeader.PickUpTime</div>
+                    <div>@item.orderHeader.Status</div>
+                    <div>@item.orderHeader.Comments</div>
+                </div>
+            </div>
+
+            <div class="col-sm-2">
+                @if (item.orderHeader.Status == "Ready for Pickup")
+                {
+                    <a asp-page="OrderPickUpDetails" asp-route-orderId="@item.orderHeader.Id" class="btn btn-success"><i class="fas fa-book"></i> Pick Up Details</a>
+                }
+                else if (item.orderHeader.Status == "Completed")
+                {
+                    <button class="btn btn-primary" disabled>Completed</button>
+                }
+                else if (item.orderHeader.Status == "Submited")
+                {
+                    <button class="btn btn-primary" disabled>Submitted</button>
+                }
+                else if (item.orderHeader.Status == "Cancelled")
+                {
+                    <button class="btn btn-danger" disabled>Cancelled</button>
+                }
+            </div>
+
+        </div>
+
+        <br />
+    }
+
+    @if (Model.orderTotalDetails.Count < 1)
+    {
+        <p>No orders found...</p>
+        <br/>
+    }
+
+</div>
+

@@ -1,0 +1,155 @@
+﻿@page
+@model TasteRestaurant.Pages.MenuItems.EditModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<br />
+
+<h2>Menu Item Edit</h2>
+
+<hr />
+
+<div>
+
+    <form method="post" enctype="multipart/form-data" class="col-sm-12">
+        <div class="col-sm-8">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="menuItemViewModel.menuItem.Id" type="hidden" />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <input asp-for="menuItemViewModel.menuItem.Name" class="form-control" />
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.Name" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+            
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.Description" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <textarea asp-for="menuItemViewModel.menuItem.Description" class="form-control"></textarea>
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.Description" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.Price" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <input asp-for="menuItemViewModel.menuItem.Price" class="form-control" />
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.Price" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.Image" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <input type="file" name="files" multiple class="form-control" />
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.Spicyness" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <select asp-for="menuItemViewModel.menuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.ESpicy>()" class="form-control"></select>
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.Spicyness" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.CategoryType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <select asp-for="menuItemViewModel.menuItem.CategoryType.Name" class="form-control">
+                        @foreach (CategoryType categoryType in Model.menuItemViewModel.categoryTypes)
+                        {
+                            <option>@categoryType.Name</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.CategoryType.Name" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-4">
+                    <label asp-for="menuItemViewModel.menuItem.FoodType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-8">
+                    <select asp-for="menuItemViewModel.menuItem.FoodType.Name" class="form-control">
+                        @foreach (FoodType foodType in Model.menuItemViewModel.foodTypes)
+                        {
+                            <option>@foodType.Name</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="menuItemViewModel.menuItem.FoodType.Name" class="text-danger"></span>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                    <button type="submit" class="btn btn-warning">Update <i class="fas fa-redo-alt"></i></button>
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+
+        <div class="col-sm-1"></div>
+        <div class="col-sm-3">
+            @if (Model.menuItemViewModel.menuItem.Image == null)
+            {
+                <img width="100%" src="~/images/defaultMenuItemImage.jpg" />
+            }
+            else
+            { 
+                <img width="100%" src="@Model.menuItemViewModel.menuItem.Image" />
+            }
+        </div>
+    </form>
+
+</div>
+
+<!--We import the ValidationScripts so we can have validtions for out fields.-->
+@section Scripts {
+    @{Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+    

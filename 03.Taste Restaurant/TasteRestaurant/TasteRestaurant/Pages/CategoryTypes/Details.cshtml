@@ -1,0 +1,54 @@
+﻿@page
+@model TasteRestaurant.Pages.CategoryTypes.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<br />
+<h2>Details Category Type</h2>
+
+<hr />
+
+<div>
+    <fieldset>
+        <div class="form-border">
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="categoryType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <div>@Model.categoryType.Name</div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="categoryType.DisplayOrder" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <div>@Model.categoryType.DisplayOrder</div>
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                <a asp-page="Edit" class="btn btn-warning" asp-route-id="@Model.categoryType.Id">Edit <i class="fas fa-book"></i></a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+    </fieldset>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@page "{id?}/{handler?}"
+@model BookList_RazorPages.Pages.Books.indexModel
+@{
+    ViewData["Title"] = "index";
+}
+
+
+
+<h2>Hello Razor Page</h2>
+
+@if (Model.Message != null) { 
+
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button  type="button" class="close" data-dismiss="alert" aria-label="close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        @Model.Message
+    </div>
+}
+
+
+
+<a asp-page="Create" class="btn btn-primary">New Book</a>
+
+<br />
+<br />
+
+@{/*We can access properties by using @Model.NameOfProp*/}
+
+@if (Model.Books.Count() >= 1)
+{
+
+    <form method="post">
+        <div>
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>
+                        ISPN
+                    </th>
+                    <th>
+                        Title
+                    </th>
+                    <th>
+                        Author
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Avaliability
+                    </th>
+                    <th>
+                        Actions
+                    </th>
+                </tr>
+
+                @foreach (var book in Model.Books)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(m => book.ISPN)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => book.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => book.Author)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => book.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(m => book.Avaliability)
+                    </td>
+                    <td>
+                        <button type="submit" class="btn btn-danger" asp-page-handler="Delete" asp-route-id="@book.Id">Delete</button>
+                        <a class="btn btn-warning" asp-route-id="@book.Id" asp-page="Edit">Edit</a>
+                        <a class="btn btn-primary" asp-route-id="@book.Id" asp-page="Details">Details</a>
+                    </td>
+                </tr>
+                }
+            </table>
+        </div>
+    </form>
+}
+else
+{
+    <p>No Books Found ...</p>
+}

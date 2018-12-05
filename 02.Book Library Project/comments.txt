@@ -1,0 +1,50 @@
+
+---------------------
+Razor Pages:
+	It's new in .NET, it started with .NET Core 2.0 !
+	We can do everithing that we can do with MVC.
+	It works on MVVM structure.
+	IT CANNOT BE USED FOR WEB API'S.
+	We can do routing, tag helpers, models, action results and more.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

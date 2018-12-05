@@ -1,0 +1,15 @@
+﻿@page
+@model TasteRestaurant.Pages.Order.OrderConfirmationModel
+@{
+    ViewData["Title"] = "OrderConfirmation";
+}
+
+<h2>Order Confirmation Page</h2>
+
+<br/>
+
+<partial name="_OrderPartial" model="@Model.OrderDetailsTotal"/>
+
+<br/>
+
+<a href="/Cart/Index" class="btn btn-success">Place Another Order</a>

@@ -1,0 +1,45 @@
+﻿@page
+@model TasteRestaurant.Pages.FoodTypes.DetailsModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<br />
+<h2>Details Food Type</h2>
+
+<hr />
+
+<div>
+    <fieldset>
+        <div class="form-border">
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="foodType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <div>@Model.foodType.Name</div>
+                </div>
+            </div>
+
+            <br />
+            <br />
+
+        </div>
+
+        <br />
+        <br />
+
+        <div class="form-group">
+            <div class="col-sm-4">
+                <a asp-page="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+                <a asp-page="Edit" class="btn btn-warning" asp-route-id="@Model.foodType.Id">Edit <i class="fas fa-book"></i></a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+    </fieldset>
+</div>
+

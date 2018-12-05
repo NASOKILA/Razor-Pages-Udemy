@@ -1,0 +1,102 @@
+﻿@page "{id}"
+@model BookList_RazorPages.Pages.BookList.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .create-book {
+        border: 1px solid #bbb9b9;
+        border-radius: 5px;
+    }
+
+    .row {
+        padding-left: 50px;
+        padding-top: 30px;
+    }
+
+    .validation {
+        position: relative;
+        left: 140px;
+        top: 10px;
+        padding: 1rem;
+    }
+</style>
+
+<h2>Book Details</h2>
+
+<br />
+<br />
+
+<div class="create-book">
+        <div class="row">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="@Model.Book.ISPN"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>@Model.Book.ISPN</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Title"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>@Model.Book.Title</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="@Model.Book.Author"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>@Model.Book.Author</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="Book.Price"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>@Model.Book.Price</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <label asp-for="@Model.Book.Avaliability"></label>
+                    </div>
+                    <div class="col-sm-4">
+                        <p>@Model.Book.Avaliability</p>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                <div class="row">
+                    <a asp-page="Index" class="btn btn-primary">Back</a>
+                </div>
+            </div>
+
+            <br />
+            <br />
+        </div>
+</div>
+
+

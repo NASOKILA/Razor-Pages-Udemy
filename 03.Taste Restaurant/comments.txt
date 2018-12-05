@@ -1,0 +1,121 @@
+
+
+Extention methods allow us to add OUR OWN CUSTOM METHODS to ALREADY EXISTING TYPES
+whitout the need to modify that type or to create a new type class !!!
+
+The extension methods are static classes and the methods insade them are also 
+static.
+
+
+
+Upload Image :	
+	We need the enctype="multipart/form-data" so that it gives us the path of
+	the file we upload instead of just it's name !!!
+
+
+Policy :
+	We need to add policies for accessing pages.
+	For Examle:
+	Some pages have to be accessable only for Admin Users even if we 
+	just type the URL.
+	
+
+
+Authorization for admin roles is easyer in MVC instead of MVVM because we are working with
+	controllers and we need to type :
+	[Authorize(Policy = "Admin")]  or  [Authorize(Roles = "Admin")]
+ 	only once above the Controller.
+	In MVVM everithyng is separated in Modules so we need to type it for every module.
+
+
+	AFTER WE ESTABLISH THE POLICIES AND AUTHORIZATION, WHEN WE TRY TO ACCESS 
+	A FORBIDDEN FOR US PAGE, IT REDIRECTS US TO THE LOGIN PAGE IF WE ARE 
+	NOT AUTHORIZED.
+
+
+	WE CAN AUTHORIZE SOME PAGE WITH THE [Authorize] ATTRIBUTE ONTOP OF THE MODEL OR CONTROLLER
+	OR WE CAN DO IT IN THE Startup.cs FILE LIKE THIS:
+	
+	services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddRazorPagesOptions(options => {
+
+                    //Authorize folders and pages here
+                    options.Conventions.AuthorizeFolder("/Account/Manage");
+                    options.Conventions.AuthorizePage("/Account/Logout");
+                });
+
+
+	OR THE THIRD WAY IS TO JUST USE AN if() STATEMENT CHECKING IF THE USER IS AUTHORIZED AND IF HE IS NOT
+	THEN WE REDIRECT TO THE LOGIN PAGE.
+
+
+CLAIMS:
+	WE HAVE TO ADD THE CLAIMS TO THE USER WITH _userManager SO THE APP WILL
+	RECOGNIZE THEM WITH THE USER.
+
+
+
+Sessions :
+	To pass info around pages is easyer with sessions.
+	We can store objects.
+
+	//Activation
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+            });
+
+
+
+	//In Configuration method:
+	app.useSession();
+
+
+
+
+IMPORTAAAANTTTTTTTTTTTTTTT:
+	When we need dependency injection in a partial view we can use "@inject" keyword.
+	
+	For example:
+		@inject ApplicationDbContext _db
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
