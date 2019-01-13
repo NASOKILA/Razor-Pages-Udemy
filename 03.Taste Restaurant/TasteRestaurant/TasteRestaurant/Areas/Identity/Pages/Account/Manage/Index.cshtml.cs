@@ -188,7 +188,7 @@ namespace TasteRestaurant.Areas.Identity.Pages.Account.Manage
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
             var callbackUrl = Url.Page(
                 "/Account/ConfirmEmail",
-                pageHandler: null,
+                pageHandler: null, 
                 values: new { userId = userId, code = code },
                 protocol: Request.Scheme);
 

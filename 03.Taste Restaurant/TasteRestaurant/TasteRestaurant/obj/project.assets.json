@@ -12249,11 +12249,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\.NET Rzor Pages Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\TasteRestaurant.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\Courses\\Razor-Pages-Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\TasteRestaurant.csproj",
       "projectName": "TasteRestaurant",
-      "projectPath": "C:\\Users\\Asus\\Desktop\\.NET Rzor Pages Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\TasteRestaurant.csproj",
+      "projectPath": "C:\\Users\\Asus\\Desktop\\Courses\\Razor-Pages-Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\TasteRestaurant.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\Desktop\\.NET Rzor Pages Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\obj\\",
+      "outputPath": "C:\\Users\\Asus\\Desktop\\Courses\\Razor-Pages-Udemy\\03.Taste Restaurant\\TasteRestaurant\\TasteRestaurant\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
